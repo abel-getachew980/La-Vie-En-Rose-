@@ -394,3 +394,5 @@ export const SOCIAL_CARDS: SocialCard[] = [
     highlights: ['Kitchen Sizzle', 'Fasting Specials', 'Viral Reels'],
   },
 ];
+
+
