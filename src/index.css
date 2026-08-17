@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cinzel", Georgia, serif;
+  
+  /* Natural Tones Palette */
+  --color-natural-bg: #fdfaf8;
+  --color-natural-canvas: #f8f1ec;
+  --color-natural-border: #f3e9e2;
+  --color-natural-border-warm: #f5dada;
+  --color-natural-sand: #dcc9bb;
+  --color-natural-text: #4a3a3a;
+  --color-natural-heading: #4a2b2b;
+  --color-natural-muted: #8a7a7a;
+  --color-natural-subtext: #8a7272;
+  --color-natural-rose: #e6a4a4;
+  --color-natural-rose-dark: #d48e8e;
+  --color-natural-rose-tint: #fdf1f1;
+  --color-natural-terracotta: #7c4d4d;
+  --color-natural-terracotta-dark: #5a3a3a;
+  --color-natural-dark: #2b1f1f;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background-color: #fdfaf8;
+    color: #4a3a3a;
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3, h4, .font-serif-display {
+    font-family: var(--font-serif);
+  }
+  section, [id] {
+    scroll-margin-top: 5.5rem;
+  }
+}
+
+/* Custom Natural Tones glass and container effects */
+.natural-glass {
+  background: rgba(253, 250, 248, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.natural-card {
+  background-color: #ffffff;
+  border: 1px solid #f3e9e2;
+}
+
+/* Polaroid Card Effect matching high.png with natural tones */
+.polaroid-frame {
+  background: #ffffff;
+  padding: 10px 10px 24px 10px;
+  box-shadow: 0 12px 24px rgba(124, 77, 77, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f3e9e2;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.polaroid-frame:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 35px rgba(230, 164, 164, 0.25), 0 8px 12px rgba(124, 77, 77, 0.1);
+  border-color: #e6a4a4;
+}

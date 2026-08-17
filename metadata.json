@@ -1,0 +1,7 @@
+{
+  "name": "La Vie En Rose Café & Restaurant",
+  "description": "Aesthetic dining, vibrant brunch spots, and seasonal specialties across Addis Ababa.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
