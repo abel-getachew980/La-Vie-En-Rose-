@@ -1,23 +1,18 @@
 import React from 'react';
-import {
-  Instagram,
-  Sparkles,
-  ExternalLink,
-  Play,
-  Heart,
-  MessageCircle,
-  Share2,
-  Video,
-  Flame
-} from 'lucide-react';
-import { RESTAURANT_INFO, SOCIAL_CARDS } from '../data/restaurantData';
-
-import lunchhImg from '../assets/lunchh.webp';
-import breakfastImg from '../assets/breakfast.webp';
-import lunchImg from '../assets/lunch.webp';
-import coffeeImg from '../assets/coffee.jpg';
-
+import { Instagram, Sparkles, ExternalLink } from 'lucide-react';
+import { RESTAURANT_INFO } from '../data/restaurantData';
 import { useLanguage } from '../context/LanguageContext';
+
+const TikTokIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-2.901 2.875 2.896 2.896 0 0 1-2.887-2.875 2.896 2.896 0 0 1 2.887-2.876c.414 0 .8.093 1.15.253V9.529a6.326 6.326 0 0 0-1.15-.106 6.34 6.34 0 0 0-6.333 6.34 6.34 6.34 0 0 0 6.333 6.34 6.34 6.34 0 0 0 6.334-6.34V9.05a8.212 8.212 0 0 0 4.782 1.527V7.132a4.835 4.835 0 0 1-1.003-.446z" />
+  </svg>
+);
 
 export const SocialHub: React.FC = () => {
   const { t } = useLanguage();
@@ -40,7 +35,7 @@ export const SocialHub: React.FC = () => {
         </div>
 
         {/* Primary Social Cards: Instagram & TikTok */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Instagram Card */}
           <div className="relative overflow-hidden rounded-3xl bg-natural-bg p-8 sm:p-10 border border-natural-border shadow-xs flex flex-col justify-between group hover:border-natural-rose hover:shadow-md hover:shadow-natural-rose/10 transition-all duration-300">
             <div>
@@ -90,7 +85,7 @@ export const SocialHub: React.FC = () => {
             <div>
               <div className="flex items-center justify-between mb-6">
                 <div className="w-14 h-14 rounded-2xl bg-natural-heading text-white flex items-center justify-center shadow-md">
-                  <Video className="w-7 h-7" />
+                  <TikTokIcon className="w-7 h-7 text-white" />
                 </div>
                 <span className="text-[10px] font-bold text-natural-text uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-natural-border">
                   TikTok
@@ -123,7 +118,7 @@ export const SocialHub: React.FC = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-natural-heading hover:bg-natural-dark text-white py-3.5 px-6 rounded-2xl font-bold uppercase text-xs tracking-wider shadow-sm transition-all duration-200 transform hover:-translate-y-0.5"
             >
-              <Video className="w-4 h-4" />
+              <TikTokIcon className="w-4 h-4" />
               <span>{t('social.watchTiktok')}</span>
               <ExternalLink className="w-3.5 h-3.5 opacity-80" />
             </a>

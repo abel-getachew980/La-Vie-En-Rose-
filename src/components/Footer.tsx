@@ -13,6 +13,17 @@ import { RESTAURANT_INFO, BRANCH_LOCATIONS } from '../data/restaurantData';
 import { smoothScrollTo, scrollToTop as smoothScrollToTop } from '../utils/smoothScroll';
 import { useLanguage } from '../context/LanguageContext';
 
+const TikTokIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-2.901 2.875 2.896 2.896 0 0 1-2.887-2.875 2.896 2.896 0 0 1 2.887-2.876c.414 0 .8.093 1.15.253V9.529a6.326 6.326 0 0 0-1.15-.106 6.34 6.34 0 0 0-6.333 6.34 6.34 6.34 0 0 0 6.333 6.34 6.34 6.34 0 0 0 6.334-6.34V9.05a8.212 8.212 0 0 0 4.782 1.527V7.132a4.835 4.835 0 0 1-1.003-.446z" />
+  </svg>
+);
+
 export const Footer: React.FC = () => {
   const { t } = useLanguage();
 
@@ -61,7 +72,7 @@ export const Footer: React.FC = () => {
                 className="w-9 h-9 rounded-xl bg-[#3a2a2a] hover:bg-natural-terracotta text-natural-sand hover:text-white flex items-center justify-center transition-colors border border-[#4a3535]"
                 aria-label="TikTok"
               >
-                <Video className="w-4 h-4" />
+                <TikTokIcon className="w-4 h-4" />
               </a>
               <a
                 href={RESTAURANT_INFO.topFoodMenuUrl}

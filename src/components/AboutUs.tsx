@@ -13,12 +13,12 @@ import {
 } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
 
-import lunchImg from '../assets/lunch.webp';
-import kitchenVideo from '../assets/kitchen.mp4';
-import lunchhImg from '../assets/lunchh.webp';
-import fastingVideo from '../assets/fasting.mp4';
-import breakfastImg from '../assets/breakfast.webp';
-import wholePlaceVideo from '../assets/whole-place.mp4';
+
+
+
+
+
+
 
 interface KitchenScene {
   id: string;
@@ -55,8 +55,8 @@ export const AboutUs: React.FC = () => {
       description: language === 'am'
         ? 'የእኛ ዋና ሼፎች ትኩስ ምግቦችን፣ ቅመማ ቅመሞችን እና ጣፋጭ የሥጋና አትክልት አሰራሮችን በከፍተኛ ጥራት ሲያዘጋጁ ይመልከቱ።'
         : 'Watch our culinary team expertly sear tender cuts with seasoned onions and aromatic spices over high flames, blending velvety reductions and fragrant steamed dishes.',
-      image: lunchImg,
-      videoSrc: kitchenVideo,
+      image: '/assets/lunch.webp',
+      videoSrc: '/assets/kitchen.mp4',
       keyHighlights: language === 'am'
         ? ['በየቀኑ ትኩስ አበሳሰል', 'የቤት ውስጥ ልዩ ቅመሞች', 'ጣፋጭ የምሳና የቁርስ አሰራር']
         : ['Fresh pan searing daily', 'House-made velvety reductions', 'Steamed spiced pilaf'],
@@ -72,8 +72,8 @@ export const AboutUs: React.FC = () => {
       description: language === 'am'
         ? 'ከአትክልት ላዛኛ እስከ ትኩስ አቮካዶ ራፕስ፣ በጾም ወቅት ጣዕማቸው ያልቀነሱ 100% ልዩ የጾም ምግቦችን እናቀርባለን።'
         : 'From rich dairy-free Genovese pesto to hearty layered fasting vegetable lasagna and crisp avocado wraps, we deliver 100% gourmet indulgence during Ethiopia’s fasting seasons.',
-      image: lunchhImg,
-      videoSrc: fastingVideo,
+      image: '/assets/lunchh.webp',
+      videoSrc: '/assets/fasting.mp4',
       keyHighlights: language === 'am'
         ? ['100% የእፅዋት ምግቦች', 'ትኩስ ቅመማ ቅመሞች', 'ሳይቀነስ ሙሉ ጣዕም']
         : ['100% plant-based recipes', 'Fresh herbs & olive oils', 'Full flavor without compromise'],
@@ -89,8 +89,8 @@ export const AboutUs: React.FC = () => {
       description: language === 'am'
         ? 'በሮዝ አበቦች የተጌጡ ግድግዳዎች፣ የተፈጥሮ ብርሃንና የግሪክ ደሴቶች ዲዛይን ለፎቶ እና አስደሳች ጊዜያት የተመቹ ናቸው።'
         : 'Experience the warm sunbeams spilling across marble tables, surrounded by floral rose wall installations and romantic archways designed for aesthetic photos.',
-      image: breakfastImg,
-      videoSrc: wholePlaceVideo,
+      image: '/assets/breakfast.webp',
+      videoSrc: '/assets/whole-place.mp4',
       keyHighlights: language === 'am'
         ? ['የሮዝ አበቦች ጌጣጌጥ', 'ለፎቶ የሚሆኑ ውብ ቦታዎች', 'መረጋጋት ያለው የካፌ አየር']
         : ['Insta-worthy photo backdrops', 'Natural sunlit dining area', 'Relaxing romantic atmosphere'],

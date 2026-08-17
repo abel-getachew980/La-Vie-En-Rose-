@@ -7,11 +7,8 @@ import {
 } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
 import { MenuItem } from '../types';
-
-import celebratoryCakeImg from '../assets/celebratory-cake.webp';
-import breakfastImg from '../assets/breakfast.webp';
-import lunchhImg from '../assets/lunchh.webp';
-import lunchImg from '../assets/lunch.webp';
+import { ImageURL } from "../types/image";
+// Image imports removed; using static URLs from public/assets
 
 import { useLanguage } from '../context/LanguageContext';
 
@@ -26,25 +23,25 @@ export const MenuHighlights: React.FC<MenuHighlightsProps> = () => {
     {
       title: language === 'am' ? 'የበዓላት ኬኮች' : 'Celebration Cakes',
       subtitle: language === 'am' ? 'የቤት ውስጥ ኬኮች' : 'Artisan Pastry & Tiers',
-      image: celebratoryCakeImg,
+      image: '/assets/celebratory-cake.webp' as ImageURL,
       rotation: '-rotate-2',
     },
     {
       title: language === 'am' ? 'የእጅ ሥራ ቁርስ' : 'Artisan Breakfast',
       subtitle: language === 'am' ? 'ሻክሹካ እና ዋፍል' : 'Shakshuka & Waffles',
-      image: breakfastImg,
+      image: '/assets/breakfast.webp' as ImageURL,
       rotation: 'rotate-1',
     },
     {
       title: language === 'am' ? 'ልዩ የጾም ምግቦች' : 'Fasting Gourmet Specials',
       subtitle: language === 'am' ? '100% የእፅዋት ምግቦች' : '100% Plant-Based Dishes',
-      image: lunchhImg,
+      image: '/assets/lunchh.webp' as ImageURL,
       rotation: '-rotate-1',
     },
     {
       title: language === 'am' ? 'ልዩ የምሳና የእራት ምግቦች' : 'Gourmet Lunch & Dinner',
       subtitle: language === 'am' ? 'ፓስታ እና የተመረጡ ምግቦች' : 'House Savory & Pastas',
-      image: lunchImg,
+      image: '/assets/lunch.webp' as ImageURL,
       rotation: 'rotate-2',
     },
   ];
@@ -87,10 +84,10 @@ export const MenuHighlights: React.FC<MenuHighlightsProps> = () => {
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-natural-border-warm/10 rounded-full blur-3xl pointer-events-none" />
 
           {/* Top Hero Banner */}
-          <div className="relative rounded-2xl overflow-hidden min-h-65 sm:min-h-80 mb-10 flex flex-col justify-between p-6 sm:p-8 bg-black/40 border border-[#4a3535] shadow-lg">
+          <div className="relative rounded-2xl overflow-hidden min-h-64 sm:min-h-80 mb-10 flex flex-col justify-between p-6 sm:p-8 bg-black/40 border border-[#4a3535] shadow-lg">
             {/* Background image overlay */}
             <img
-              src={lunchImg}
+              src={'/assets/lunch.webp'}
               alt="A Place of Delight Feast"
               className="absolute inset-0 w-full h-full object-cover object-center opacity-40 mix-blend-overlay"
             />
