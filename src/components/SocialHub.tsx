@@ -12,6 +12,11 @@ import {
 } from 'lucide-react';
 import { RESTAURANT_INFO, SOCIAL_CARDS } from '../data/restaurantData';
 
+import lunchhImg from '../assets/lunchh.webp';
+import breakfastImg from '../assets/breakfast.webp';
+import lunchImg from '../assets/lunch.webp';
+import coffeeImg from '../assets/coffee.jpg';
+
 export const SocialHub: React.FC = () => {
   // Aesthetic reel showcase cards representing TikTok and IG vibes from uploaded media
   const socialReels = [
@@ -21,7 +26,7 @@ export const SocialHub: React.FC = () => {
       views: '48.2K',
       platform: 'TikTok',
       tag: '100% Fasting',
-      image: '/assets/lunchh.webp',
+      image: lunchhImg,
       description: 'Avocado wraps, pesto pasta, and fasting lasagna in Addis',
     },
     {
@@ -30,7 +35,7 @@ export const SocialHub: React.FC = () => {
       views: '62.4K',
       platform: 'Instagram',
       tag: 'Summit Branch',
-      image: '/assets/breakfast.webp',
+      image: breakfastImg,
       description: 'Floral rose walls, golden sunlight, and strawberry waffles',
     },
     {
@@ -39,7 +44,7 @@ export const SocialHub: React.FC = () => {
       views: '34.9K',
       platform: 'TikTok',
       tag: 'Kitchen Behind-The-Scenes',
-      image: '/assets/lunch.webp',
+      image: lunchImg,
       description: 'Plating beef stroganoff with artisanal crisp tuile',
     },
     {
@@ -48,7 +53,7 @@ export const SocialHub: React.FC = () => {
       views: '29.1K',
       platform: 'Instagram',
       tag: 'Ethiopian Heirloom',
-      image: '/assets/coffee.jpg',
+      image: coffeeImg,
       description: 'Velvet crema and heart latte art on marble saucers',
     },
   ];

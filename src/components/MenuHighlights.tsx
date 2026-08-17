@@ -87,7 +87,7 @@ export const MenuHighlights: React.FC<MenuHighlightsProps> = () => {
           <div className="relative rounded-2xl overflow-hidden min-h-[260px] sm:min-h-[320px] mb-10 flex flex-col justify-between p-6 sm:p-8 bg-black/40 border border-[#4a3535] shadow-lg">
             {/* Background image overlay */}
             <img
-              src="/assets/lunch.webp"
+              src={lunchImg}
               alt="A Place of Delight Feast"
               className="absolute inset-0 w-full h-full object-cover object-center opacity-40 mix-blend-overlay"
             />
