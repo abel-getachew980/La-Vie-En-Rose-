@@ -32,7 +32,10 @@ interface KitchenScene {
   keyHighlights: string[];
 }
 
+import { useLanguage } from '../context/LanguageContext';
+
 export const AboutUs: React.FC = () => {
+  const { t } = useLanguage();
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [activeSceneIndex, setActiveSceneIndex] = useState(0);
@@ -117,14 +120,14 @@ export const AboutUs: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#fdf1f1] border border-[#f5dada] text-[#d48e8e] text-xs font-bold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5 text-[#d48e8e]" />
-            <span>Our Brand Story</span>
+            <span>{t('about.label')}</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#4a2b2b] leading-tight mb-6">
-            {RESTAURANT_INFO.philosophyTitle}
+            {t('about.title')}
           </h2>
           <div className="relative p-6 sm:p-8 rounded-3xl bg-[#fdfaf8] border border-[#f3e9e2] shadow-xs max-w-2xl mx-auto">
             <p className="font-serif text-lg sm:text-xl md:text-2xl text-[#4a3a3a] italic leading-relaxed font-normal">
-              {RESTAURANT_INFO.philosophyCopy}
+              {t('about.copy')}
             </p>
           </div>
         </div>

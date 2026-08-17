@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { UtensilsCrossed, MapPin, Phone, ExternalLink, Menu, X, Sparkles } from 'lucide-react';
+import { UtensilsCrossed, MapPin, Phone, ExternalLink, Menu, X, Sparkles, Globe } from 'lucide-react';
 import { RESTAURANT_INFO, BRANCH_LOCATIONS } from '../data/restaurantData';
 import { smoothScrollTo } from '../utils/smoothScroll';
+import { useLanguage } from '../context/LanguageContext';
 
 interface HeaderProps {
   onOpenReservation?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = () => {
+  const { language, toggleLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeNav, setActiveNav] = useState('home');
@@ -39,12 +41,12 @@ export const Header: React.FC<HeaderProps> = () => {
   }, []);
 
   const navLinks = [
-    { label: 'Home', href: '#home', id: 'home' },
-    { label: 'About Us', href: '#about', id: 'about' },
-    { label: 'Menu & Highlights', href: '#menu', id: 'menu' },
-    { label: 'Locations', href: '#locations', id: 'locations' },
-    { label: 'Reviews', href: '#reviews', id: 'reviews' },
-    { label: 'Follow Us', href: '#social', id: 'social' },
+    { labelKey: 'nav.home', href: '#home', id: 'home' },
+    { labelKey: 'nav.about', href: '#about', id: 'about' },
+    { labelKey: 'nav.menu', href: '#menu', id: 'menu' },
+    { labelKey: 'nav.locations', href: '#locations', id: 'locations' },
+    { labelKey: 'nav.reviews', href: '#reviews', id: 'reviews' },
+    { labelKey: 'nav.social', href: '#social', id: 'social' },
   ];
 
   const handleNavClick = (href: string) => {
@@ -66,7 +68,7 @@ export const Header: React.FC<HeaderProps> = () => {
         <div className="flex items-center gap-3">
           <span className="inline-flex items-center gap-1.5 font-bold uppercase text-[10px] tracking-tight text-[#d48e8e] bg-[#fdf1f1] px-3 py-0.5 rounded-full border border-[#f5dada]">
             <Sparkles className="w-3 h-3 text-[#d48e8e]" />
-            Summit Branch (Feyel Bet) Now Open
+            {t('nav.announcement')}
           </span>
           <span className="text-[#dcc9bb]">|</span>
           <span className="text-[#8a7272]">Greek Island Aesthetic • 100% Fasting Specials • Artisan Pastries</span>
@@ -74,7 +76,7 @@ export const Header: React.FC<HeaderProps> = () => {
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1.5">
             <MapPin className="w-3 h-3 text-[#e6a4a4]" />
-            <span>3 Branches in Addis Ababa</span>
+            <span>{t('nav.branchesCount')}</span>
           </div>
           <span className="text-[#dcc9bb]">|</span>
           <a
@@ -129,7 +131,7 @@ export const Header: React.FC<HeaderProps> = () => {
                     : 'text-[#8a7a7a] hover:text-[#7c4d4d]'
                 }`}
               >
-                {link.label}
+                {t(link.labelKey)}
                 {activeNav === link.id && (
                   <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#e6a4a4] rounded-full" />
                 )}
@@ -137,8 +139,18 @@ export const Header: React.FC<HeaderProps> = () => {
             ))}
           </nav>
 
-          {/* Primary CTA Button */}
+          {/* Primary CTA & Language Toggle */}
           <div className="hidden sm:flex items-center gap-3">
+            {/* EN / AM Toggle Button */}
+            <button
+              onClick={toggleLanguage}
+              className="inline-flex items-center gap-1.5 bg-[#fdf1f1] hover:bg-[#fbdada] text-[#7c4d4d] border border-[#f5dada] px-3 py-2 rounded-full text-xs font-bold transition-all cursor-pointer shadow-xs"
+              title="Switch Language / ቋንቋ ይቀይሩ"
+            >
+              <Globe className="w-3.5 h-3.5" />
+              <span>{language === 'en' ? 'EN | አማርኛ' : 'አማርኛ | EN'}</span>
+            </button>
+
             <a
               id="header-cta-topfood"
               href={RESTAURANT_INFO.topFoodMenuUrl}
@@ -147,25 +159,32 @@ export const Header: React.FC<HeaderProps> = () => {
               className="inline-flex items-center gap-2 bg-[#7c4d4d] hover:bg-[#5a3a3a] text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-sm hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5"
             >
               <UtensilsCrossed className="w-3.5 h-3.5" />
-              <span>View Digital Menu</span>
+              <span>{t('nav.topfoodBtn')}</span>
               <ExternalLink className="w-3 h-3 opacity-80" />
             </a>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu controls */}
           <div className="flex lg:hidden items-center gap-2">
+            <button
+              onClick={toggleLanguage}
+              className="text-xs bg-[#fdf1f1] text-[#7c4d4d] border border-[#f5dada] px-2.5 py-1.5 rounded-full font-bold shadow-xs cursor-pointer"
+            >
+              {language === 'en' ? 'አማርኛ' : 'EN'}
+            </button>
+
             <a
               href={RESTAURANT_INFO.topFoodMenuUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs bg-[#fdf1f1] text-[#7c4d4d] border border-[#f5dada] px-3 py-1.5 rounded-full font-bold uppercase tracking-wider sm:hidden"
+              className="text-xs bg-[#7c4d4d] text-white px-3 py-1.5 rounded-full font-bold uppercase tracking-wider sm:hidden shadow-xs"
             >
               Menu
             </a>
             <button
               id="mobile-menu-toggle"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-[#4a3a3a] hover:text-[#2b1f1f] hover:bg-[#f8f1ec] focus:outline-none"
+              className="p-2 rounded-lg text-[#4a3a3a] hover:text-[#2b1f1f] hover:bg-[#f8f1ec] focus:outline-none cursor-pointer"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -174,7 +193,7 @@ export const Header: React.FC<HeaderProps> = () => {
         </div>
       </div>
 
-      {/* Mobile menu dropdown */}
+      {/* Mobile menu drawer */}
       {mobileMenuOpen && (
         <div
           id="mobile-menu-drawer"
@@ -193,7 +212,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   activeNav === link.id ? 'text-[#e6a4a4]' : 'text-[#8a7a7a]'
                 }`}
               >
-                {link.label}
+                {t(link.labelKey)}
               </a>
             ))}
 
@@ -205,7 +224,7 @@ export const Header: React.FC<HeaderProps> = () => {
                 className="w-full flex items-center justify-center gap-2 bg-[#7c4d4d] text-white py-3 rounded-xl font-bold uppercase text-xs tracking-widest shadow"
               >
                 <UtensilsCrossed className="w-4 h-4" />
-                <span>View Full Digital Menu (TopFood)</span>
+                <span>{t('nav.topfoodBtn')}</span>
                 <ExternalLink className="w-4 h-4" />
               </a>
             </div>

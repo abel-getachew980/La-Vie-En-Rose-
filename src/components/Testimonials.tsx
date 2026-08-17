@@ -1,8 +1,11 @@
 import React from 'react';
 import { Star, Quote, CheckCircle, Sparkles } from 'lucide-react';
 import { TESTIMONIALS } from '../data/restaurantData';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Testimonials: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="reviews" className="py-24 bg-[#fdfaf8] relative overflow-hidden">
       {/* Decorative ambient subtle background */}
@@ -11,13 +14,13 @@ export const Testimonials: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#fdf1f1] border border-[#f5dada] text-[#d48e8e] text-xs font-bold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5 text-[#d48e8e]" />
-            <span>Social Proof &amp; Reviews</span>
+            <span>{t('reviews.label')}</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#4a2b2b] leading-tight mb-4">
-            Guest Testimonials
+            {t('reviews.title')}
           </h2>
           <p className="text-[#8a7272] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto font-normal">
-            Read what brunch lovers, local guides, and regular guests share about their experience with us.
+            {t('reviews.sub')}
           </p>
         </div>
 
