@@ -11,7 +11,6 @@ import {
   Compass
 } from 'lucide-react';
 import { BRANCH_LOCATIONS } from '../data/restaurantData';
-import { BranchLocation } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 
 export const LocationsDirectory: React.FC = () => {
@@ -19,8 +18,25 @@ export const LocationsDirectory: React.FC = () => {
   const [selectedBranchId, setSelectedBranchId] = useState<string>(BRANCH_LOCATIONS[0].id);
   const [copiedPhone, setCopiedPhone] = useState<string | null>(null);
 
+  const localizedBranchLocations = BRANCH_LOCATIONS.map((b) => {
+    let keyPrefix = 'location.summit';
+    if (b.id === 'bole-rwanda') keyPrefix = 'location.boleRwanda';
+    if (b.id === 'bole-bulbula') keyPrefix = 'location.boleBulbula';
+
+    return {
+      ...b,
+      name: t(`${keyPrefix}.name`) || b.name,
+      neighborhood: t(`${keyPrefix}.neighborhood`) || b.neighborhood,
+      keyFeatures: t(`${keyPrefix}.features`) || b.keyFeatures,
+      highlightTag: t(`${keyPrefix}.tag`) || b.highlightTag,
+      hours: t(`${keyPrefix}.hours`) || b.hours,
+      addressDetails: t(`${keyPrefix}.address`) || b.addressDetails,
+      ambiance: t(`${keyPrefix}.ambiance`) || b.ambiance,
+    };
+  });
+
   const selectedBranch =
-    BRANCH_LOCATIONS.find((b) => b.id === selectedBranchId) || BRANCH_LOCATIONS[0];
+    localizedBranchLocations.find((b) => b.id === selectedBranchId) || localizedBranchLocations[0];
 
   const handleCopyPhone = (phone: string) => {
     navigator.clipboard.writeText(phone);
@@ -33,21 +49,21 @@ export const LocationsDirectory: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#fdf1f1] border border-[#f5dada] text-[#d48e8e] text-xs font-bold uppercase tracking-wider mb-4">
-            <MapPin className="w-3.5 h-3.5 text-[#7c4d4d]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-natural-rose-tint border border-natural-border-warm text-natural-rose-dark text-xs font-bold uppercase tracking-wider mb-4">
+            <MapPin className="w-3.5 h-3.5 text-natural-terracotta" />
             <span>{t('locations.label')}</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#4a2b2b] leading-tight mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-natural-heading leading-tight mb-4">
             {t('locations.title')}
           </h2>
-          <p className="text-[#8a7272] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto font-normal">
+          <p className="text-natural-subtext text-base sm:text-lg leading-relaxed max-w-2xl mx-auto font-normal">
             {t('locations.sub')}
           </p>
         </div>
 
         {/* Branch Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {BRANCH_LOCATIONS.map((branch) => {
+          {localizedBranchLocations.map((branch) => {
             const isSelected = branch.id === selectedBranchId;
             const directionsLink =
               branch.directionsUrl ||
@@ -60,20 +76,20 @@ export const LocationsDirectory: React.FC = () => {
                 onClick={() => setSelectedBranchId(branch.id)}
                 className={`group rounded-3xl p-6 sm:p-7 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                   isSelected
-                    ? 'bg-[#fdfaf8] border-[#e6a4a4] shadow-lg shadow-[#e6a4a4]/15 ring-2 ring-[#e6a4a4]/40'
-                    : 'bg-[#fdfaf8] border-[#f3e9e2] hover:bg-white hover:border-[#e6a4a4] hover:shadow-md'
+                    ? 'bg-natural-bg border-natural-rose shadow-lg shadow-natural-rose/15 ring-2 ring-natural-rose/40'
+                    : 'bg-natural-bg border-natural-border hover:bg-white hover:border-natural-rose hover:shadow-md'
                 }`}
               >
                 <div>
                   {/* Image & Tag */}
-                  <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-5 bg-stone-200">
+                  <div className="relative aspect-16/10 rounded-2xl overflow-hidden mb-5 bg-stone-200">
                     <img
                       src={branch.image}
                       alt={branch.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     {branch.highlightTag && (
-                      <div className="absolute top-3 left-3 bg-[#7c4d4d] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                      <div className="absolute top-3 left-3 bg-natural-terracotta text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
                         {branch.highlightTag}
                       </div>
                     )}
@@ -81,76 +97,76 @@ export const LocationsDirectory: React.FC = () => {
 
                   {/* Branch Name & Neighborhood */}
                   <div className="mb-4">
-                    <h3 className="font-serif text-2xl font-bold text-[#4a2b2b] mb-1 group-hover:text-[#7c4d4d] transition-colors">
+                    <h3 className="font-serif text-2xl font-bold text-natural-heading mb-1 group-hover:text-natural-terracotta transition-colors">
                       {branch.name}
                     </h3>
                     <div className="flex items-center justify-between">
-                      <div className="text-xs font-bold text-[#d48e8e] uppercase tracking-wider">
+                      <div className="text-xs font-bold text-natural-rose-dark uppercase tracking-wider">
                         {branch.neighborhood}
                       </div>
-                      <div className="text-[10px] font-mono font-semibold text-[#8a7a7a] bg-white px-2 py-0.5 rounded-md border border-[#f3e9e2]">
+                      <div className="text-[10px] font-mono font-semibold text-natural-muted bg-white px-2 py-0.5 rounded-md border border-natural-border">
                         {branch.coordinates.formatted}
                       </div>
                     </div>
                   </div>
 
                   {/* Key Features */}
-                  <div className="p-3.5 rounded-2xl bg-white border border-[#f3e9e2] mb-5">
-                    <div className="text-[10px] font-bold text-[#8a7a7a] uppercase tracking-wider mb-1">
-                      Key Highlights
+                  <div className="p-3.5 rounded-2xl bg-white border border-natural-border mb-5">
+                    <div className="text-[10px] font-bold text-natural-muted uppercase tracking-wider mb-1">
+                      {t('locations.keyHighlights')}
                     </div>
-                    <p className="text-sm font-medium text-[#4a3a3a]">{branch.keyFeatures}</p>
+                    <p className="text-sm font-medium text-natural-text">{branch.keyFeatures}</p>
                   </div>
 
                   {/* Contact Number & Hours */}
-                  <div className="space-y-2 mb-6 text-xs text-[#8a7a7a]">
-                    <div className="flex items-center justify-between p-2.5 rounded-xl bg-white border border-[#f3e9e2]">
+                  <div className="space-y-2 mb-6 text-xs text-natural-muted">
+                    <div className="flex items-center justify-between p-2.5 rounded-xl bg-white border border-natural-border">
                       <div className="flex items-center gap-2">
-                        <Phone className="w-3.5 h-3.5 text-[#7c4d4d]" />
-                        <span className="font-mono font-bold text-[#4a3a3a]">{branch.phone}</span>
+                        <Phone className="w-3.5 h-3.5 text-natural-terracotta" />
+                        <span className="font-mono font-bold text-natural-text">{branch.phone}</span>
                       </div>
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           handleCopyPhone(branch.phone);
                         }}
-                        className="p-1 text-[#8a7a7a] hover:text-[#7c4d4d] cursor-pointer"
-                        title="Copy phone number"
+                        className="p-1 text-natural-muted hover:text-natural-terracotta cursor-pointer"
+                        title={t('locations.copyPhone')}
                       >
                         {copiedPhone === branch.phone ? (
-                          <Check className="w-3.5 h-3.5 text-[#7c4d4d]" />
+                          <Check className="w-3.5 h-3.5 text-natural-terracotta" />
                         ) : (
                           <Copy className="w-3.5 h-3.5" />
                         )}
                       </button>
                     </div>
 
-                    <div className="flex items-center gap-2 px-1 text-[#8a7a7a]">
-                      <Clock className="w-3.5 h-3.5 text-[#8a7a7a] flex-shrink-0" />
+                    <div className="flex items-center gap-2 px-1 text-natural-muted">
+                      <Clock className="w-3.5 h-3.5 text-natural-muted shrink-0" />
                       <span>{branch.hours}</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Actions */}
-                <div className="pt-4 border-t border-[#f3e9e2] flex items-center gap-3">
+                <div className="pt-4 border-t border-natural-border flex items-center gap-3">
                   <a
                     id={`btn-directions-${branch.id}`}
                     href={directionsLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="flex-1 inline-flex items-center justify-center gap-2 bg-[#7c4d4d] hover:bg-[#5a3a3a] text-white py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-xs hover:shadow-sm group/btn cursor-pointer"
+                    className="flex-1 inline-flex items-center justify-center gap-2 bg-natural-terracotta hover:bg-natural-terracotta-dark text-white py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-xs hover:shadow-sm group/btn cursor-pointer"
                   >
                     <Navigation className="w-3.5 h-3.5 transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
-                    <span>Get Directions</span>
+                    <span>{t('locations.getDirections')}</span>
                     <ExternalLink className="w-3 h-3 opacity-70" />
                   </a>
 
                   <a
                     href={`tel:${branch.phoneRaw}`}
                     onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center justify-center p-2.5 bg-white hover:bg-[#fdf1f1] text-[#4a3a3a] hover:text-[#7c4d4d] border border-[#f3e9e2] rounded-xl transition-colors shadow-xs"
+                    className="inline-flex items-center justify-center p-2.5 bg-white hover:bg-natural-rose-tint text-natural-text hover:text-natural-terracotta border border-natural-border rounded-xl transition-colors shadow-xs"
                     title={`Call ${branch.name}`}
                   >
                     <Phone className="w-4 h-4" />
@@ -162,30 +178,30 @@ export const LocationsDirectory: React.FC = () => {
         </div>
 
         {/* Selected Branch Detail Spotlight Card */}
-        <div className="bg-[#fdfaf8] rounded-3xl p-8 sm:p-10 border border-[#f3e9e2] shadow-xs">
+        <div className="bg-natural-bg rounded-3xl p-8 sm:p-10 border border-natural-border shadow-xs">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8">
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#d48e8e] uppercase tracking-widest mb-2">
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-natural-rose-dark uppercase tracking-widest mb-2">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Featured Branch Details</span>
+                <span>{t('locations.spotlightTitle')}</span>
               </div>
-              <h3 className="font-serif text-3xl font-bold text-[#4a2b2b] mb-3">
+              <h3 className="font-serif text-3xl font-bold text-natural-heading mb-3">
                 {selectedBranch.name} — {selectedBranch.neighborhood}
               </h3>
-              <p className="text-[#8a7272] text-base leading-relaxed mb-6 font-normal">
+              <p className="text-natural-subtext text-base leading-relaxed mb-6 font-normal">
                 {selectedBranch.ambiance}
               </p>
-              <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-[#4a3a3a]">
-                <div className="flex items-center gap-2 bg-white px-3.5 py-2 rounded-xl border border-[#f3e9e2]">
-                  <Clock className="w-4 h-4 text-[#7c4d4d]" />
+              <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-natural-text">
+                <div className="flex items-center gap-2 bg-white px-3.5 py-2 rounded-xl border border-natural-border">
+                  <Clock className="w-4 h-4 text-natural-terracotta" />
                   <span>{selectedBranch.hours}</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white px-3.5 py-2 rounded-xl border border-[#f3e9e2]">
-                  <MapPin className="w-4 h-4 text-[#7c4d4d]" />
+                <div className="flex items-center gap-2 bg-white px-3.5 py-2 rounded-xl border border-natural-border">
+                  <MapPin className="w-4 h-4 text-natural-terracotta" />
                   <span>{selectedBranch.addressDetails}</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white px-3.5 py-2 rounded-xl border border-[#f3e9e2]">
-                  <Compass className="w-4 h-4 text-[#7c4d4d]" />
+                <div className="flex items-center gap-2 bg-white px-3.5 py-2 rounded-xl border border-natural-border">
+                  <Compass className="w-4 h-4 text-natural-terracotta" />
                   <span className="font-mono text-xs font-semibold">{selectedBranch.coordinates.formatted}</span>
                 </div>
               </div>
@@ -200,19 +216,19 @@ export const LocationsDirectory: React.FC = () => {
                 }
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 bg-[#7c4d4d] hover:bg-[#5a3a3a] text-white py-3.5 rounded-2xl font-bold uppercase text-xs tracking-wider shadow-sm transition-all cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 bg-natural-terracotta hover:bg-natural-terracotta-dark text-white py-3.5 rounded-2xl font-bold uppercase text-xs tracking-wider shadow-sm transition-all cursor-pointer"
               >
                 <Navigation className="w-4 h-4" />
-                <span>Get Directions ({selectedBranch.name.replace(' Branch', '')})</span>
+                <span>{t('locations.getDirections')} ({selectedBranch.name.replace(' Branch', '')})</span>
                 <ExternalLink className="w-3.5 h-3.5 opacity-70" />
               </a>
 
               <a
                 href={`tel:${selectedBranch.phoneRaw}`}
-                className="w-full flex items-center justify-center gap-2 bg-white hover:bg-[#fdf1f1] text-[#4a3a3a] hover:text-[#7c4d4d] border border-[#f3e9e2] py-3.5 rounded-2xl font-bold uppercase text-xs tracking-widest transition-all"
+                className="w-full flex items-center justify-center gap-2 bg-white hover:bg-natural-rose-tint text-natural-text hover:text-natural-terracotta border border-natural-border py-3.5 rounded-2xl font-bold uppercase text-xs tracking-widest transition-all"
               >
-                <Phone className="w-4 h-4 text-[#7c4d4d]" />
-                <span>Direct Dial: {selectedBranch.phone}</span>
+                <Phone className="w-4 h-4 text-natural-terracotta" />
+                <span>{t('locations.directDial')} {selectedBranch.phone}</span>
               </a>
             </div>
           </div>

@@ -16,12 +16,12 @@ export default function App() {
 
   return (
     <LanguageProvider>
-      <div className="min-h-screen flex flex-col bg-[#fdfaf8] text-[#4a3a3a] selection:bg-[#f5dada] selection:text-[#4a2b2b]">
+      <div className="min-h-screen flex flex-col bg-natural-bg text-natural-text selection:bg-natural-border-warm selection:text-natural-heading">
         {/* Navigation Header */}
         <Header />
 
         {/* Main Content Sections */}
-        <main className="flex-grow">
+        <main className="grow">
           {/* 1. Hero Section */}
           <Hero />
 
