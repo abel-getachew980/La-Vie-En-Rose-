@@ -1,6 +1,9 @@
 import React from 'react';
 import { Sparkles, ArrowDown, MapPin, Utensils, Heart, Award, Coffee } from 'lucide-react';
 import { RESTAURANT_INFO, BRANCH_LOCATIONS } from '../data/restaurantData';
+import lunchhImg from '../assets/lunchh.webp';
+import breakfastImg from '../assets/breakfast.webp';
+import celebratoryCakeImg from '../assets/celebratory-cake.webp';
 import { smoothScrollTo } from '../utils/smoothScroll';
 
 export const Hero: React.FC = () => {
@@ -108,7 +111,7 @@ export const Hero: React.FC = () => {
               <div className="relative z-20 rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
                 <div className="relative h-72 sm:h-96 w-full overflow-hidden group">
                   <img
-                    src="/assets/lunchh.webp"
+                    src={lunchhImg}
                     alt="La Vie En Rose Cafe Atmosphere & Gourmet Dishes"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
@@ -129,7 +132,7 @@ export const Hero: React.FC = () => {
               <div className="absolute -top-6 -left-6 sm:-left-10 z-30 w-36 sm:w-44 bg-white p-2.5 rounded-2xl shadow-xl border border-[#f3e9e2] rotate-[-6deg] hover:rotate-0 transition-transform duration-300">
                 <div className="h-24 sm:h-28 rounded-xl overflow-hidden mb-2 bg-stone-100">
                   <img
-                    src="/assets/breakfast.webp"
+                    src={breakfastImg}
                     alt="Belgian Waffles Brunch"
                     className="w-full h-full object-cover"
                   />
@@ -142,7 +145,7 @@ export const Hero: React.FC = () => {
               <div className="absolute -bottom-6 -right-4 sm:-right-8 z-30 w-40 sm:w-48 bg-white p-2.5 rounded-2xl shadow-xl border border-[#f3e9e2] rotate-[5deg] hover:rotate-0 transition-transform duration-300">
                 <div className="h-24 sm:h-28 rounded-xl overflow-hidden mb-2 bg-stone-100">
                   <img
-                    src="/assets/celebratory-cake.webp"
+                    src={celebratoryCakeImg}
                     alt="Celebratory Artisan Cake"
                     className="w-full h-full object-cover"
                   />

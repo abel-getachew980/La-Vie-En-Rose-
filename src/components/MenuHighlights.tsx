@@ -8,6 +8,11 @@ import {
 import { RESTAURANT_INFO } from '../data/restaurantData';
 import { MenuItem } from '../types';
 
+import celebratoryCakeImg from '../assets/celebratory-cake.webp';
+import breakfastImg from '../assets/breakfast.webp';
+import lunchhImg from '../assets/lunchh.webp';
+import lunchImg from '../assets/lunch.webp';
+
 interface MenuHighlightsProps {
   onSelectDish?: (dish: MenuItem) => void;
 }
@@ -18,25 +23,25 @@ export const MenuHighlights: React.FC<MenuHighlightsProps> = () => {
     {
       title: 'Celebration Cakes',
       subtitle: 'Artisan Pastry & Tiers',
-      image: '/assets/celebratory-cake.webp',
+      image: celebratoryCakeImg,
       rotation: '-rotate-2',
     },
     {
       title: 'Artisan Breakfast',
       subtitle: 'Shakshuka & Waffles',
-      image: '/assets/breakfast.webp',
+      image: breakfastImg,
       rotation: 'rotate-1',
     },
     {
       title: 'Fasting Gourmet Specials',
       subtitle: '100% Plant-Based Dishes',
-      image: '/assets/lunchh.webp',
+      image: lunchhImg,
       rotation: '-rotate-1',
     },
     {
       title: 'Gourmet Lunch & Dinner',
       subtitle: 'House Savory & Pastas',
-      image: '/assets/lunch.webp',
+      image: lunchImg,
       rotation: 'rotate-2',
     },
   ];

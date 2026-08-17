@@ -13,6 +13,13 @@ import {
 } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/restaurantData';
 
+import lunchImg from '../assets/lunch.webp';
+import kitchenVideo from '../assets/kitchen.mp4';
+import lunchhImg from '../assets/lunchh.webp';
+import fastingVideo from '../assets/fasting.mp4';
+import breakfastImg from '../assets/breakfast.webp';
+import wholePlaceVideo from '../assets/whole-place.mp4';
+
 interface KitchenScene {
   id: string;
   title: string;
@@ -42,8 +49,8 @@ export const AboutUs: React.FC = () => {
       duration: '0:38',
       description:
         'Watch our culinary team expertly sear tender cuts with seasoned onions and aromatic spices over high flames, blending velvety reductions and fragrant steamed dishes.',
-      image: '/assets/lunch.webp',
-      videoSrc: '/assets/kitchen.mp4',
+      image: lunchImg,
+      videoSrc: kitchenVideo,
       keyHighlights: ['Fresh pan searing daily', 'House-made velvety reductions', 'Steamed spiced pilaf'],
     },
     {
@@ -54,8 +61,8 @@ export const AboutUs: React.FC = () => {
       duration: '0:42',
       description:
         'From rich dairy-free Genovese pesto to hearty layered fasting vegetable lasagna and crisp avocado wraps, we deliver 100% gourmet indulgence during Ethiopia’s fasting seasons.',
-      image: '/assets/lunchh.webp',
-      videoSrc: '/assets/fasting.mp4',
+      image: lunchhImg,
+      videoSrc: fastingVideo,
       keyHighlights: ['100% plant-based recipes', 'Fresh herbs & olive oils', 'Full flavor without compromise'],
     },
     {
@@ -66,8 +73,8 @@ export const AboutUs: React.FC = () => {
       duration: '0:30',
       description:
         'Experience the sunlight-bathed marble tables, Greek island-inspired whitewashed archways, and vibrant blooming rose floral walls across our Addis Ababa branches.',
-      image: '/assets/breakfast.webp',
-      videoSrc: '/assets/whole-place.mp4',
+      image: breakfastImg,
+      videoSrc: wholePlaceVideo,
       keyHighlights: ['Greek Island architecture', 'Blooming rose floral walls', 'Warm Addis Ababa hospitality'],
     },
   ];
