@@ -77,23 +77,6 @@ export const Testimonials: React.FC = () => {
           })}
         </div>
 
-        {/* Overall Rating Callout */}
-        <div className="mt-14 max-w-xl mx-auto rounded-3xl bg-white p-6 border border-natural-border shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-natural-rose-tint text-natural-terracotta flex items-center justify-center font-serif text-xl font-bold border border-natural-border-warm">
-              5.0
-            </div>
-            <div>
-              <div className="font-bold text-natural-heading text-sm">{t('reviews.calloutTitle')}</div>
-              <div className="text-xs text-natural-subtext">{t('reviews.calloutSub')}</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-1 text-natural-terracotta">
-            {[1, 2, 3, 4, 5].map((s) => (
-              <Star key={s} className="w-4 h-4 fill-natural-terracotta text-natural-terracotta" />
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
