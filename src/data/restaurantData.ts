@@ -26,8 +26,8 @@ export const VALUE_PROPS = [
     id: 'atmosphere',
     title: 'Exceptional Atmosphere',
     description:
-      'Greek island-inspired aesthetic, blooming floral rose walls, sunlight-bathed marble tables, and vibrant interiors crafted for memorable moments.',
-    badge: 'Greek Island Aesthetic',
+      'Blooming floral rose walls, sunlight-bathed marble tables, and vibrant interiors crafted for memorable moments.',
+    badge: 'Rose-Coloured Ambience',
   },
   {
     id: 'hospitality',

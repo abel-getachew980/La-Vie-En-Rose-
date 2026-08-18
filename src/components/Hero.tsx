@@ -77,10 +77,6 @@ export const Hero: React.FC = () => {
             {/* Feature Value Props Chips */}
             <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-natural-border w-full">
               <div className="flex items-center gap-2 bg-white/80 px-3.5 py-1.5 rounded-full border border-natural-border text-xs font-semibold text-natural-text shadow-2xs">
-                <Sparkles className="w-3.5 h-3.5 text-natural-rose" />
-                <span>{t('hero.badge1')}</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/80 px-3.5 py-1.5 rounded-full border border-natural-border text-xs font-semibold text-natural-text shadow-2xs">
                 <Heart className="w-3.5 h-3.5 text-natural-rose" />
                 <span>{t('hero.badge2')}</span>
               </div>

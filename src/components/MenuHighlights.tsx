@@ -27,15 +27,15 @@ export const MenuHighlights: React.FC<MenuHighlightsProps> = () => {
       rotation: '-rotate-2',
     },
     {
-      title: language === 'am' ? 'የእጅ ሥራ ቁርስ' : 'Artisan Breakfast',
+      title: language === 'am' ? 'ቁርስ' : 'Artisan Breakfast',
       subtitle: language === 'am' ? 'ሻክሹካ እና ዋፍል' : 'Shakshuka & Waffles',
-      image: '/assets/breakfast.webp' as ImageURL,
+      image: '/assets/lunchh.webp' as ImageURL,
       rotation: 'rotate-1',
     },
     {
       title: language === 'am' ? 'ልዩ የጾም ምግቦች' : 'Fasting Gourmet Specials',
       subtitle: language === 'am' ? '100% የእፅዋት ምግቦች' : '100% Plant-Based Dishes',
-      image: '/assets/lunchh.webp' as ImageURL,
+      image: '/assets/breakfast.webp' as ImageURL,
       rotation: '-rotate-1',
     },
     {

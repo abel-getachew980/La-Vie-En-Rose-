@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -39,6 +40,12 @@
   }
   h1, h2, h3, h4, .font-serif-display {
     font-family: var(--font-serif);
+  }
+  [lang='am'],
+  .amharic-text,
+  .amharic,
+  .font-amharic {
+    font-family: "Noto Serif Ethiopic", Georgia, serif;
   }
   section, [id] {
     scroll-margin-top: 5.5rem;

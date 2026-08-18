@@ -25,7 +25,9 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
 
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage, setLanguage, t }}>
-      {children}
+      <div lang={language} className={language === 'am' ? 'amharic' : undefined}>
+        {children}
+      </div>
     </LanguageContext.Provider>
   );
 };
