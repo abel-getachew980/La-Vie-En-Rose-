@@ -126,14 +126,14 @@ export const AboutUs: React.FC = () => {
   };
 
   return (
-    <section id="about" className="py-24 bg-white relative overflow-hidden">
+    <section id="about" className="py-16 bg-white relative overflow-hidden">
       {/* Decorative subtle background accents in warm blush */}
       <div className="absolute top-1/2 left-0 w-72 h-72 bg-natural-rose-tint rounded-full blur-3xl -translate-y-1/2 -ml-20 pointer-events-none" />
       <div className="absolute top-10 right-0 w-80 h-80 bg-natural-canvas rounded-full blur-3xl -mr-20 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-natural-rose-tint border border-natural-border-warm text-natural-rose-dark text-xs font-bold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5 text-natural-rose-dark" />
             <span>{t('about.label')}</span>

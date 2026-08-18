@@ -47,11 +47,11 @@ export const MenuHighlights: React.FC<MenuHighlightsProps> = () => {
   ];
 
   return (
-    <section id="menu" className="py-24 bg-natural-bg relative">
+    <section id="menu" className="py-16 bg-natural-bg relative">
       {/* Decorative ambiance */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-natural-rose-tint border border-natural-border-warm text-natural-rose-dark text-xs font-bold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5 text-natural-rose-dark" />
             <span>{t('menu.label')}</span>
