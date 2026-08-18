@@ -76,9 +76,11 @@ export const Header: React.FC<HeaderProps> = () => {
             }}
             className="group flex items-center gap-3 focus:outline-none"
           >
-            <div className="w-10 h-10 rounded-full bg-natural-rose flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform duration-200">
-              <span className="font-serif italic text-xl font-bold">R</span>
-            </div>
+            <img
+              src="/assets/lavie%20logo.png"
+              alt="La Vie En Rose logo"
+              className="h-12 w-12 rounded-full object-cover shadow-xs ring-2 ring-natural-rose/20 group-hover:scale-105 transition-transform duration-200"
+            />
             <div className="flex flex-col">
               <span className="font-serif text-xl font-bold tracking-tight text-natural-terracotta leading-tight group-hover:text-natural-terracotta-dark transition-colors">
                 La Vie En Rose
